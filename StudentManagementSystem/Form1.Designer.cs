@@ -1,6 +1,6 @@
 ﻿namespace StudentManagementSystem
 {
-    partial class Form1
+    partial class lblTitle
     {
         /// <summary>
         ///  Required designer variable.
@@ -39,6 +39,7 @@
             btnClear = new Button();
             btnExit = new Button();
             lstStudents = new ListBox();
+            lblTotalStudents = new Label();
             SuspendLayout();
             // 
             // label1
@@ -137,14 +138,24 @@
             lstStudents.FormattingEnabled = true;
             lstStudents.Location = new Point(3, 292);
             lstStudents.Name = "lstStudents";
-            lstStudents.Size = new Size(180, 129);
+            lstStudents.Size = new Size(487, 129);
             lstStudents.TabIndex = 10;
             // 
-            // Form1
+            // lblTotalStudents
+            // 
+            lblTotalStudents.AutoSize = true;
+            lblTotalStudents.Location = new Point(3, 424);
+            lblTotalStudents.Name = "lblTotalStudents";
+            lblTotalStudents.Size = new Size(142, 25);
+            lblTotalStudents.TabIndex = 11;
+            lblTotalStudents.Text = "Total Students: 0";
+            // 
+            // lblTitle
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 526);
+            Controls.Add(lblTotalStudents);
             Controls.Add(lstStudents);
             Controls.Add(btnExit);
             Controls.Add(btnClear);
@@ -156,8 +167,9 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form1";
+            Name = "lblTitle";
             Text = "Student Management System";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,5 +187,6 @@
         private Button btnClear;
         private Button btnExit;
         private ListBox lstStudents;
+        private Label lblTotalStudents;
     }
 }

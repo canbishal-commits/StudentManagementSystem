@@ -1,37 +1,21 @@
 namespace StudentManagementSystem
 {
-    public partial class Form1 : Form
+    public partial class lblTitle : Form
     {
-        public Form1()
+        public lblTitle()
         {
             InitializeComponent();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            {
-                if (txtName.Text == "" || txtAge.Text == "")
-                {
-                    MessageBox.Show("Please fill all fields");
-                }
-                else
-                {
-                    string student =
-                        "Name: " + txtName.Text +
-                        " | Age: " + txtAge.Text +
-                        " | Department: " + cmbDepartment.Text;
-
-                    lstStudents.Items.Add(student);
-
-                    MessageBox.Show("Student Added Successfully");
-                }
-            }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtName.Text == "" || txtAge.Text == "")
-            {
+                if (txtName.Text == "" || txtAge.Text == "" || cmbDepartment.Text == "")
+                {
                 MessageBox.Show("Please fill all fields");
             }
             else
@@ -40,8 +24,13 @@ namespace StudentManagementSystem
                     "Name: " + txtName.Text +
                     " | Age: " + txtAge.Text +
                     " | Department: " + cmbDepartment.Text;
-
+                if (lstStudents.Items.Contains(student))
+                {
+                    MessageBox.Show("Student already exists");
+                    return;
+                }
                 lstStudents.Items.Add(student);
+                lblTotalStudents.Text = "Total Students: " + lstStudents.Items.Count;
 
                 MessageBox.Show("Student Added Successfully");
             }
@@ -52,6 +41,7 @@ namespace StudentManagementSystem
             if (lstStudents.SelectedIndex != -1)
             {
                 lstStudents.Items.RemoveAt(lstStudents.SelectedIndex);
+                lblTotalStudents.Text = "Total Students: " + lstStudents.Items.Count;
 
                 MessageBox.Show("Student Deleted");
             }
@@ -65,12 +55,18 @@ namespace StudentManagementSystem
         {
             txtName.Clear();
             txtAge.Clear();
+            cmbDepartment.ResetText();
             cmbDepartment.SelectedIndex = -1;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
