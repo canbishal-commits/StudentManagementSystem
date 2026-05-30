@@ -20,6 +20,11 @@ namespace StudentManagementSystem
             }
             else
             {
+                if (!int.TryParse(txtAge.Text, out _))
+                {
+                    MessageBox.Show("Age must be a number");
+                    return;
+                }
                 string student =
                     "Name: " + txtName.Text +
                     " | Age: " + txtAge.Text +
